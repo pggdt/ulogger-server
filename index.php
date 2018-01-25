@@ -93,6 +93,7 @@
     <script type="text/javascript">
       google.load('visualization', '1', { packages:['corechart'] });
     </script>
+    <script type="text/javascript" src="js/wgs2mars.js"></script>
   </head>
 
   <body onload="loadMapAPI();">
@@ -153,6 +154,9 @@
               <option value="openlayers"<?= (uConfig::$mapapi == "openlayers") ? " selected" : "" ?>>OpenLayers 2</option>
               <option value="openlayers3"<?= (uConfig::$mapapi == "openlayers3") ? " selected" : "" ?>>OpenLayers 3+</option>
             </select>
+            <?php if (uConfig::$lang == 'zh'): ?>
+            	<input id="wgs2mars" type="checkbox"> 糾偏<br>
+            <?php endif; ?>
           </form>
         </div>
 

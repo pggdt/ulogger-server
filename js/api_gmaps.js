@@ -70,7 +70,12 @@ function displayTrack(xml, update) {
     totalSeconds += p.seconds;
     p['totalMeters'] = totalMeters;
     p['totalSeconds'] = totalSeconds;
-    p['coordinates'] = new google.maps.LatLng(p.latitude, p.longitude);
+    if (document.getElementById("wgs2mars") != null && document.getElementById("wgs2mars").checked) {
+    	var gcjloc = transformFromWGSToGCJ(p.longitude,p.latitude);
+    	p['coordinates'] = new google.maps.LatLng(gcjloc.lat, gcjloc.lng);
+	}else{
+		p['coordinates'] = new google.maps.LatLng(p.latitude, p.longitude);
+	}
     // set marker
     setMarker(p, i, posLen);
     // update polyline
